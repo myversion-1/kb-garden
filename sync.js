@@ -23,7 +23,6 @@ const EXCLUDED_DIRS = new Set([
   '00-inbox',
   '01-claude/memory',
   '01-claude/config',
-  '04-moments',
   '99-archive',
   'D:-',
   'templates',
@@ -51,6 +50,16 @@ function shouldExclude(filePath) {
     if (EXCLUDED_DIRS.has(current)) {
       return true;
     }
+  }
+
+  // Fine-grained control for 04-moments: only allow 04-moments/taste
+  if (normalized.startsWith('04-moments/')) {
+    if (!normalized.startsWith('04-moments/taste')) {
+      return true;
+    }
+  }
+  if (normalized === '04-moments') {
+    return true;
   }
 
   // Check filename against excluded patterns
