@@ -15,11 +15,18 @@ import {
   simplifySlug,
 } from "../../util/path"
 import { defaultListPageLayout, sharedPageComponents } from "../../../quartz.layout"
-import { FolderContent } from "../../components"
+import { FolderContent, GalleryPage } from "../../components"
 import { write } from "./helpers"
 import { i18n, TRANSLATIONS } from "../../i18n"
 import { BuildCtx } from "../../util/ctx"
 import { StaticResources } from "../../util/resources"
+
+function getPageBody(folderSlug: string, sortFn?: (f1: QuartzPluginData, f2: QuartzPluginData) => number) {
+  if (folderSlug === "04-moments") {
+    return GalleryPage({ excludeDirs: ["people"] })
+  }
+  return FolderContent({ sort: sortFn })
+}
 interface FolderPageOptions extends FullPageLayout {
   sort?: (f1: QuartzPluginData, f2: QuartzPluginData) => number
 }
@@ -101,27 +108,29 @@ function _getFolders(slug: FullSlug): SimpleSlug[] {
 }
 
 export const FolderPage: QuartzEmitterPlugin<Partial<FolderPageOptions>> = (userOpts) => {
-  const opts: FullPageLayout = {
+  const baseOpts: FullPageLayout = {
     ...sharedPageComponents,
     ...defaultListPageLayout,
-    pageBody: FolderContent({ sort: userOpts?.sort }),
     ...userOpts,
   }
+  const sortFn = userOpts?.sort
 
-  const { head: Head, header, beforeBody, pageBody, afterBody, left, right, footer: Footer } = opts
+  const { head: Head, header, beforeBody, afterBody, left, right, footer: Footer } = baseOpts
   const Header = HeaderConstructor()
   const Body = BodyConstructor()
 
   return {
     name: "FolderPage",
     getQuartzComponents() {
+      // Return all possible components
       return [
         Head,
         Header,
         Body,
         ...header,
         ...beforeBody,
-        pageBody,
+        FolderContent({ sort: sortFn }),
+        GalleryPage({ excludeDirs: ["people"] }),
         ...afterBody,
         ...left,
         ...right,
@@ -143,7 +152,37 @@ export const FolderPage: QuartzEmitterPlugin<Partial<FolderPageOptions>> = (user
       )
 
       const folderInfo = computeFolderInfo(folders, content, cfg.locale)
-      yield* processFolderInfo(ctx, folderInfo, allFiles, opts, resources)
+
+      // Process each folder with appropriate page body
+      for (const [folder, folderContent] of Object.entries(folderInfo) as [SimpleSlug, ProcessedContent][]) {
+        const slug = joinSegments(folder, "index") as FullSlug
+        const [tree, file] = folderContent
+        const externalResources = pageResources(pathToRoot(slug), resources)
+        const componentData: QuartzComponentProps = {
+          ctx,
+          fileData: file.data,
+          externalResources,
+          cfg,
+          children: [],
+          tree,
+          allFiles,
+        }
+
+        // Select page body based on folder
+        const pageBody = getPageBody(folder, sortFn)
+        const opts: FullPageLayout = {
+          ...baseOpts,
+          pageBody,
+        }
+
+        const content = renderPage(cfg, slug, componentData, opts, externalResources)
+        yield write({
+          ctx,
+          content,
+          slug,
+          ext: ".html",
+        })
+      }
     },
     async *partialEmit(ctx, content, resources, changeEvents) {
       const allFiles = content.map((c) => c[1].data)
@@ -163,7 +202,33 @@ export const FolderPage: QuartzEmitterPlugin<Partial<FolderPageOptions>> = (user
       // If there are affected folders, rebuild their pages
       if (affectedFolders.size > 0) {
         const folderInfo = computeFolderInfo(affectedFolders, content, cfg.locale)
-        yield* processFolderInfo(ctx, folderInfo, allFiles, opts, resources)
+        const externalResources = pageResources("", resources)
+
+        for (const [folder, folderContent] of Object.entries(folderInfo) as [SimpleSlug, ProcessedContent][]) {
+          const slug = joinSegments(folder, "index") as FullSlug
+          const [tree, file] = folderContent
+          const componentData: QuartzComponentProps = {
+            ctx,
+            fileData: file.data,
+            externalResources,
+            cfg,
+            children: [],
+            tree,
+            allFiles,
+          }
+          const pageBody = getPageBody(folder, sortFn)
+          const opts: FullPageLayout = {
+            ...baseOpts,
+            pageBody,
+          }
+          const content = renderPage(cfg, slug, componentData, opts, externalResources)
+          yield write({
+            ctx,
+            content,
+            slug,
+            ext: ".html",
+          })
+        }
       }
     },
   }
