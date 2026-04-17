@@ -59,7 +59,7 @@ function shouldExclude(filePath) {
     }
   }
   if (normalized === '04-moments') {
-    return true;
+    return false;
   }
 
   // Check filename against excluded patterns
