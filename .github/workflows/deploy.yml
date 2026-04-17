@@ -48,7 +48,7 @@ jobs:
         run: npx quartz build --verbose
       
       - name: Verify synced content
-          run: ls -la content/ | head -20
+        run: ls -la content/ | head -20
       
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
