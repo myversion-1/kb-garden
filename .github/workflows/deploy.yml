@@ -25,7 +25,7 @@ jobs:
       - name: Checkout private KB-GH
         uses: actions/checkout@v4
         with:
-          repository: myversion-1/-
+          repository: myversion-1/KB-GH
           token: ${{ secrets.KB_GH_PAT }}
           path: kb-gh-source
           fetch-depth: 1
