@@ -1,3 +1,8 @@
+---
+title: Taste Log
+tags: [seed]
+---
+
 # Taste Log
 
 - 2026/03/20 16:08 — [温开水是最好的饮品]

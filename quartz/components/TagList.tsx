@@ -2,6 +2,8 @@ import { FullSlug, resolveRelative } from "../util/path"
 import { QuartzComponent, QuartzComponentConstructor, QuartzComponentProps } from "./types"
 import { classNames } from "../util/lang"
 
+const STATUS_TAGS = ["seed", "sapling", "evergreen"]
+
 const TagList: QuartzComponent = ({ fileData, displayClass }: QuartzComponentProps) => {
   const tags = fileData.frontmatter?.tags
   if (tags && tags.length > 0) {
@@ -9,10 +11,12 @@ const TagList: QuartzComponent = ({ fileData, displayClass }: QuartzComponentPro
       <ul class={classNames(displayClass, "tags")}>
         {tags.map((tag) => {
           const linkDest = resolveRelative(fileData.slug!, `tags/${tag}` as FullSlug)
+          const isStatusTag = STATUS_TAGS.includes(tag)
+          const tagClass = isStatusTag ? `status-tag status-${tag}` : "tag-link"
           return (
             <li>
-              <a href={linkDest} class="internal tag-link">
-                {tag}
+              <a href={linkDest} class={classNames("internal", tagClass)}>
+                {isStatusTag ? `${tag} 🔰` : tag}
               </a>
             </li>
           )
@@ -50,6 +54,28 @@ a.internal.tag-link {
   background-color: var(--highlight);
   padding: 0.2rem 0.4rem;
   margin: 0 0.1rem;
+}
+
+a.internal.status-tag {
+  border-radius: 12px;
+  padding: 0.2rem 0.5rem;
+  font-weight: 500;
+  color: var(--dark);
+}
+
+a.internal.status-seed {
+  background-color: #c8e6c9;
+  color: #2e7d32;
+}
+
+a.internal.status-sapling {
+  background-color: #bbdefb;
+  color: #1565c0;
+}
+
+a.internal.status-evergreen {
+  background-color: #e1bee7;
+  color: #6a1b9a;
 }
 `
 

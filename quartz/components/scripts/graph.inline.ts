@@ -205,11 +205,14 @@ async function renderGraph(graph: HTMLElement, fullSlug: FullSlug) {
     }
   }
 
-  function nodeRadius(d: NodeData) {
+  function nodeRadius(d: NodeData, cfg?: D3Config) {
     const numLinks = graphData.links.filter(
       (l) => l.source.id === d.id || l.target.id === d.id,
     ).length
-    return 2 + Math.sqrt(numLinks)
+
+    // Use logarithmic scaling for more visible but smoother node size differences
+    // Base radius 2, scale factor 1.5
+    return 2 + 1.5 * Math.log(1 + numLinks)
   }
 
   let hoveredNodeId: string | null = null

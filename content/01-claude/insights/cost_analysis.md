@@ -1,4 +1,7 @@
-# Claude Code CLI 成本优化方案
+---
+title: Claude Code CLI 成本优化方案
+tags: [evergreen]
+---
 
 ## 当前配置（OpenRouter）
 - **主要模型**: moonshotai/kimi-k2.5 (~$12/百万输出 tokens)
