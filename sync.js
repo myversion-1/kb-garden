@@ -15,12 +15,21 @@ const CONTENT_DIR = path.resolve(__dirname, 'content');
 
 // Allowed directories for sync (digital garden content)
 const ALLOWED_SUBDIRS = new Set([
+  '01-claude',
   '02-inspiration',
   '03-reading',
-  '04-moments/taste',
+  '04-moments',
 ]);
 
-// Path blacklist: these directories/files are NEVER synced
+// Subdirectories to exclude within allowed parent dirs
+const EXCLUDED_SUBDIRS = new Set([
+  'memory',   // 01-claude/memory - 私人记忆
+  'config',   // 01-claude/config - 配置
+  'skills',   // 01-claude/skills - 技能定义
+  'people',   // 04-moments/people - 人脸照片
+]);
+
+// Path blacklist: these directories/files are NEVER synced (unless explicitly allowed)
 const EXCLUDED_DIRS = new Set([
   '.git',
   '.claude',
@@ -42,6 +51,7 @@ const EXCLUDED_PATTERNS = [
   /^mempalace\.yaml$/i,          // mempalace.yaml
   /^\.env/i,                     // .env*
   /^package.*\.json$/i,         // package.json / package-lock.json
+  /^CLAUDE\.md$/i,               // CLAUDE.md - 项目内部AI指导文件
 ];
 
 // Manual YAML frontmatter parsing (no external dependency)
@@ -72,16 +82,32 @@ function parseFrontmatter(content) {
 function shouldExclude(filePath) {
   const relativePath = path.relative(SOURCE_DIR, filePath);
   const normalized = relativePath.replace(/\\/g, '/');
-  const firstDir = normalized.split('/')[0];
+  const parts = normalized.split('/');
 
-  // Only allow specific subdirectories
-  if (!ALLOWED_SUBDIRS.has(firstDir)) {
-    return true;
+  // If first part is in ALLOWED_SUBDIRS, allow it (handles top-level like 01-claude)
+  const firstDir = parts[0];
+  if (ALLOWED_SUBDIRS.has(firstDir)) {
+    // Continue to check exclusions and patterns below
+  } else {
+    // Check for nested allowed paths (e.g., 01-claude/insights)
+    const combined = parts.length >= 2 ? `${parts[0]}/${parts[1]}` : '';
+    if (!ALLOWED_SUBDIRS.has(combined)) {
+      return true;
+    }
   }
 
-  // Fine-grained control for 04-moments: only allow 04-moments/taste
-  if (normalized.startsWith('04-moments/')) {
-    if (!normalized.startsWith('04-moments/taste')) {
+  // For 04-moments, check second-level directory exclusion
+  if (firstDir === '04-moments' && parts.length >= 2) {
+    const secondDir = parts[1];
+    if (EXCLUDED_SUBDIRS.has(secondDir)) {
+      return true;
+    }
+  }
+
+  // For 01-claude, also check second-level exclusions
+  if (firstDir === '01-claude' && parts.length >= 2) {
+    const secondDir = parts[1];
+    if (EXCLUDED_SUBDIRS.has(secondDir)) {
       return true;
     }
   }
@@ -143,12 +169,24 @@ function syncDirectory(srcDir, destDir) {
       const { synced, skipped } = syncDirectory(srcPath, path.join(destDir, entry.name));
       syncedCount += synced;
       skippedCount += skipped;
-    } else if (entry.isFile() && entry.name.endsWith('.md')) {
-      const content = fs.readFileSync(srcPath, 'utf-8');
-      if (hasPublishFalse(content)) {
-        console.log(`[SKIP] ${relativePath} (publish: false)`);
+    } else if (entry.isFile()) {
+      // Allow both .md files and image files
+      const isMarkdown = entry.name.endsWith('.md');
+      const isImage = /\.(jpg|jpeg|png|gif|webp|svg)$/i.test(entry.name);
+
+      if (!isMarkdown && !isImage) {
+        console.log(`[SKIP] ${relativePath} (non-markdown non-image)`);
         skippedCount++;
         continue;
+      }
+
+      if (isMarkdown) {
+        const content = fs.readFileSync(srcPath, 'utf-8');
+        if (hasPublishFalse(content)) {
+          console.log(`[SKIP] ${relativePath} (publish: false)`);
+          skippedCount++;
+          continue;
+        }
       }
 
       const destPath = path.join(destDir, entry.name);
@@ -156,10 +194,6 @@ function syncDirectory(srcDir, destDir) {
       fs.copyFileSync(srcPath, destPath);
       console.log(`[SYNC] ${relativePath}`);
       syncedCount++;
-    } else {
-      // Non-markdown files: skip by default
-      console.log(`[SKIP] ${relativePath} (non-markdown)`);
-      skippedCount++;
     }
   }
 
