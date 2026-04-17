@@ -214,12 +214,12 @@ function main() {
 
   const { synced, skipped } = syncDirectory(SOURCE_DIR, CONTENT_DIR);
 
-  // Rename README.md to index.md so it becomes the Quartz home page
-  const readmePath = path.join(CONTENT_DIR, 'README.md');
+  // Copy README.md from source root as index.md (home page)
+  const sourceReadmePath = path.join(SOURCE_DIR, 'README.md');
   const indexPath = path.join(CONTENT_DIR, 'index.md');
-  if (fs.existsSync(readmePath)) {
-    fs.renameSync(readmePath, indexPath);
-    console.log('[INFO] Renamed README.md -> index.md');
+  if (fs.existsSync(sourceReadmePath)) {
+    fs.copyFileSync(sourceReadmePath, indexPath);
+    console.log('[INFO] Copied README.md -> index.md');
   }
 
   console.log('');
