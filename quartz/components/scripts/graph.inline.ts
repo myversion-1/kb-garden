@@ -193,16 +193,24 @@ async function renderGraph(graph: HTMLElement, fullSlug: FullSlug) {
     {} as Record<(typeof cssVars)[number], string>,
   )
 
-  // calculate color
+  // calculate color - based on maturity status tags
   const color = (d: NodeData) => {
     const isCurrent = d.id === slug
     if (isCurrent) {
       return computedStyleMap["--secondary"]
     } else if (visited.has(d.id) || d.id.startsWith("tags/")) {
       return computedStyleMap["--tertiary"]
-    } else {
-      return computedStyleMap["--gray"]
+    } else if (d.tags) {
+      // Check for status tags
+      if (d.tags.includes("evergreen")) {
+        return "#9c27b0" // purple - mature content
+      } else if (d.tags.includes("sapling")) {
+        return "#1976d2" // blue - growing content
+      } else if (d.tags.includes("seed")) {
+        return "#388e3c" // green - seedling content
+      }
     }
+    return computedStyleMap["--gray"]
   }
 
   function nodeRadius(d: NodeData, cfg?: D3Config) {
@@ -210,9 +218,21 @@ async function renderGraph(graph: HTMLElement, fullSlug: FullSlug) {
       (l) => l.source.id === d.id || l.target.id === d.id,
     ).length
 
-    // Use logarithmic scaling for more visible but smoother node size differences
-    // Base radius 2, scale factor 1.5
-    return 2 + 1.5 * Math.log(1 + numLinks)
+    // Base size from link count
+    let baseSize = 2 + 1.5 * Math.log(1 + numLinks)
+
+    // Add bonus for status tags
+    if (d.tags) {
+      if (d.tags.includes("evergreen")) {
+        baseSize += 4 // biggest nodes
+      } else if (d.tags.includes("sapling")) {
+        baseSize += 2 // medium nodes
+      } else if (d.tags.includes("seed")) {
+        baseSize += 0 // base size
+      }
+    }
+
+    return baseSize
   }
 
   let hoveredNodeId: string | null = null
