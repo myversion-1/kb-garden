@@ -6,6 +6,24 @@
       <description>最近的10条笔记 on KB Garden</description>
       <generator>Quartz -- quartz.jzhao.xyz</generator>
       <item>
+    <title>README</title>
+    <link>https://myversion-1.github.io/kb-garden/01-claude/insights/README</link>
+    <guid>https://myversion-1.github.io/kb-garden/01-claude/insights/README</guid>
+    <description><![CDATA[ Claude 使用洞察报告 本目录包含 Claude Code CLI 的使用分析和成本优化报告。 文件说明 文件说明cost_analysis.md成本优化方案对比usage-report.html使用数据可视化报告 更新时间 配置备份: 2026-03-18 成本分析: 2026-03-16 查看报告 在浏览器中打开 usage-report.html 查看详细使用统计。. ]]></description>
+    <pubDate>Fri, 17 Apr 2026 07:50:33 GMT</pubDate>
+  </item><item>
+    <title>cost_analysis</title>
+    <link>https://myversion-1.github.io/kb-garden/01-claude/insights/cost_analysis</link>
+    <guid>https://myversion-1.github.io/kb-garden/01-claude/insights/cost_analysis</guid>
+    <description><![CDATA[ Claude Code CLI 成本优化方案 当前配置（OpenRouter） 主要模型: moonshotai/kimi-k2.5 (~$12/百万输出 tokens) 推理模型: deepseek/deepseek-r1 (~$7.25/百万输出 tokens) 使用级别: 重度 (&gt;50万 tokens/天) 推荐方案 方案 A：官方直连（最优性价比） 模型渠道输入价格输出价格月省估算*Kimi K2.5Moonshot 官方￥2.5/M￥12/M~¥800-1500DeepSeek-R1DeepSeek 官方$0.55/M$2.19/M~¥1200-2000 操作建议： 注册 M... ]]></description>
+    <pubDate>Fri, 17 Apr 2026 07:50:33 GMT</pubDate>
+  </item><item>
+    <title>taste</title>
+    <link>https://myversion-1.github.io/kb-garden/04-moments/taste</link>
+    <guid>https://myversion-1.github.io/kb-garden/04-moments/taste</guid>
+    <description><![CDATA[ Taste Log 2026/03/20 16:08 — [温开水是最好的饮品] what’s repeating?- 2026/03/21 10:10 — 咖啡适合在早晨而不是下午或其之后喝 what’s repeating?- 2026/03/21 17:03 — 高不确定性意味着高信息价值 2026/03/21 17:21 — 三个框架协同：古德哈特告诉你不要做什么（不要让指标成为目标）；SDT告诉你环境需要满足什么（三种基本需求）；WOOP告诉你如何把好的意图转化为实际行动（心理对比+执行意图）。整合后是一个完整的学习设计原则。 2026/03/21 17:27 — 关于重要概念：贝叶... ]]></description>
+    <pubDate>Fri, 17 Apr 2026 07:50:33 GMT</pubDate>
+  </item><item>
     <title>Educational Incentives and Rewards</title>
     <link>https://myversion-1.github.io/kb-garden/02-inspiration/2026/04-17-011121-educational-incentives-and-rewards</link>
     <guid>https://myversion-1.github.io/kb-garden/02-inspiration/2026/04-17-011121-educational-incentives-and-rewards</guid>
@@ -30,29 +48,23 @@
     <description><![CDATA[ 分享我的读书笔记。 ]]></description>
     <pubDate>Fri, 17 Apr 2026 00:00:00 GMT</pubDate>
   </item><item>
-    <title>Fortune Discussion Screenshot</title>
-    <link>https://myversion-1.github.io/kb-garden/02-inspiration/2026/04-16-084230-fortune-discussion-screenshot</link>
-    <guid>https://myversion-1.github.io/kb-garden/02-inspiration/2026/04-16-084230-fortune-discussion-screenshot</guid>
-    <description><![CDATA[ 2026/04/16 11:38 📷 命好讨论截图 | 今日认证：本人是顶级好命. ]]></description>
-    <pubDate>Thu, 16 Apr 2026 00:00:00 GMT</pubDate>
+    <title>A Mother&#039;s Critique on a Bus</title>
+    <link>https://myversion-1.github.io/kb-garden/04-moments/taste/04-17-011121-a-mother-s-critique-on-a-bus</link>
+    <guid>https://myversion-1.github.io/kb-garden/04-moments/taste/04-17-011121-a-mother-s-critique-on-a-bus</guid>
+    <description><![CDATA[ An overheard conversation on a bus that raises questions about parenting and self-esteem. ]]></description>
+    <pubDate>Fri, 17 Apr 2026 00:00:00 GMT</pubDate>
   </item><item>
-    <title>Ginger and Scallion Chicken with Mystery Mustard</title>
-    <link>https://myversion-1.github.io/kb-garden/02-inspiration/2026/04-16-084230-ginger-and-scallion-chicken-with-mystery-mustard</link>
-    <guid>https://myversion-1.github.io/kb-garden/02-inspiration/2026/04-16-084230-ginger-and-scallion-chicken-with-mystery-mustard</guid>
-    <description><![CDATA[ 2026/04/16 16:42 📷 姜葱鸡块 | 第一次吃加了不明来源芥末酱的地白切鸡@剑艺食店（在高德上都找不到的一家村里小店）. ]]></description>
-    <pubDate>Thu, 16 Apr 2026 00:00:00 GMT</pubDate>
+    <title>Punctuality and the Fingerprint Attendance Machine</title>
+    <link>https://myversion-1.github.io/kb-garden/04-moments/taste/04-17-011121-punctuality-and-the-fingerprint-attendance-machine</link>
+    <guid>https://myversion-1.github.io/kb-garden/04-moments/taste/04-17-011121-punctuality-and-the-fingerprint-attendance-machine</guid>
+    <description><![CDATA[ A personal commitment to punctuality captured in a moment. ]]></description>
+    <pubDate>Fri, 17 Apr 2026 00:00:00 GMT</pubDate>
   </item><item>
-    <title>Spicy Peanut Beef Soup</title>
-    <link>https://myversion-1.github.io/kb-garden/02-inspiration/2026/04-16-084230-spicy-peanut-beef-soup</link>
-    <guid>https://myversion-1.github.io/kb-garden/02-inspiration/2026/04-16-084230-spicy-peanut-beef-soup</guid>
-    <description><![CDATA[ 2026/04/15 13:34 📷 牛肉汤配辣椒花生. ]]></description>
-    <pubDate>Thu, 16 Apr 2026 00:00:00 GMT</pubDate>
-  </item><item>
-    <title>最近在读黎紫书的《流俗地》</title>
-    <link>https://myversion-1.github.io/kb-garden/03-reading/2026/04-16-095048-%E6%9C%80%E8%BF%91%E5%9C%A8%E8%AF%BB%E9%BB%8E%E7%B4%AB%E4%B9%A6%E7%9A%84-%E6%B5%81%E4%BF%97%E5%9C%B0</link>
-    <guid>https://myversion-1.github.io/kb-garden/03-reading/2026/04-16-095048-%E6%9C%80%E8%BF%91%E5%9C%A8%E8%AF%BB%E9%BB%8E%E7%B4%AB%E4%B9%A6%E7%9A%84-%E6%B5%81%E4%BF%97%E5%9C%B0</guid>
-    <description><![CDATA[ 2026/04/16 17:50 最近在读黎紫书的《流俗地》，意料之中的精彩之作！ 黎紫书 流俗地 精彩之作. ]]></description>
-    <pubDate>Thu, 16 Apr 2026 00:00:00 GMT</pubDate>
+    <title>Cat Litter Stockpile</title>
+    <link>https://myversion-1.github.io/kb-garden/04-moments/taste/04-17-013026-cat-litter-stockpile</link>
+    <guid>https://myversion-1.github.io/kb-garden/04-moments/taste/04-17-013026-cat-litter-stockpile</guid>
+    <description><![CDATA[ A moment of pet care routine. ]]></description>
+    <pubDate>Fri, 17 Apr 2026 00:00:00 GMT</pubDate>
   </item>
     </channel>
   </rss>
