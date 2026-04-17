@@ -6,6 +6,12 @@
       <description>最近的10条笔记 on KB Garden</description>
       <generator>Quartz -- quartz.jzhao.xyz</generator>
       <item>
+    <title>index</title>
+    <link>https://myversion-1.github.io/kb-garden/</link>
+    <guid>https://myversion-1.github.io/kb-garden/</guid>
+    <description><![CDATA[ 知识管理库 个人知识沉淀与灵感记录，多设备同步 目录结构 目录说明00-inbox/📥 收件箱，快速收集01-claude/Claude 记忆文件、上下文、Skills02-inspiration/灵感记录（按日期）03-reading/浏览记录、读书笔记04-moments/触动瞬间（文字、影像、声音、感受）05-snippets/代码片段、模板06-projects/项目文档07-learning/学习笔记99-archive/📦 归档，历史内容templates/📝 笔记模板 注意：02-07 及 99-archive 等目录可能在本地不存在——隐私策略要求文件 push 到 Gi... ]]></description>
+    <pubDate>Fri, 17 Apr 2026 08:08:29 GMT</pubDate>
+  </item><item>
     <title>README</title>
     <link>https://myversion-1.github.io/kb-garden/01-claude/insights/README</link>
     <guid>https://myversion-1.github.io/kb-garden/01-claude/insights/README</guid>
@@ -58,12 +64,6 @@
     <link>https://myversion-1.github.io/kb-garden/04-moments/taste/04-17-011121-punctuality-and-the-fingerprint-attendance-machine</link>
     <guid>https://myversion-1.github.io/kb-garden/04-moments/taste/04-17-011121-punctuality-and-the-fingerprint-attendance-machine</guid>
     <description><![CDATA[ A personal commitment to punctuality captured in a moment. ]]></description>
-    <pubDate>Fri, 17 Apr 2026 00:00:00 GMT</pubDate>
-  </item><item>
-    <title>Cat Litter Stockpile</title>
-    <link>https://myversion-1.github.io/kb-garden/04-moments/taste/04-17-013026-cat-litter-stockpile</link>
-    <guid>https://myversion-1.github.io/kb-garden/04-moments/taste/04-17-013026-cat-litter-stockpile</guid>
-    <description><![CDATA[ A moment of pet care routine. ]]></description>
     <pubDate>Fri, 17 Apr 2026 00:00:00 GMT</pubDate>
   </item>
     </channel>
