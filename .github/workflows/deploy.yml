@@ -48,7 +48,7 @@ jobs:
         run: ls -la content/ | head -20
 
       - name: Build Quartz
-        run: npx quartz build --verbose
+        run: npx quartz build --verbose --gitignore false
       
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
