@@ -1,6 +1,5 @@
 import fs from 'fs';
 import path from 'path';
-import matter from 'gray-matter';
 import { fileURLToPath } from 'url';
 
 const __filename = fileURLToPath(import.meta.url);
@@ -13,6 +12,13 @@ const SOURCE_DIR = process.env.KB_GH_SOURCE
   ? path.resolve(process.env.KB_GH_SOURCE)
   : path.resolve(__dirname, 'kb-gh-source');
 const CONTENT_DIR = path.resolve(__dirname, 'content');
+
+// Allowed directories for sync (digital garden content)
+const ALLOWED_SUBDIRS = new Set([
+  '02-inspiration',
+  '03-reading',
+  '04-moments/taste',
+]);
 
 // Path blacklist: these directories/files are NEVER synced
 const EXCLUDED_DIRS = new Set([
@@ -35,21 +41,42 @@ const EXCLUDED_PATTERNS = [
   /^entities\.json$/i,           // entities.json
   /^mempalace\.yaml$/i,          // mempalace.yaml
   /^\.env/i,                     // .env*
-  /^package.*\.json$/i,          // package.json / package-lock.json
+  /^package.*\.json$/i,         // package.json / package-lock.json
 ];
+
+// Manual YAML frontmatter parsing (no external dependency)
+function parseFrontmatter(content) {
+  if (!content.startsWith('---')) {
+    return { data: {} };
+  }
+  const endIndex = content.indexOf('---', 3);
+  if (endIndex === -1) {
+    return { data: {} };
+  }
+  const fmLines = content.slice(3, endIndex).trim().split('\n');
+  const data = {};
+  for (const line of fmLines) {
+    const colonIndex = line.indexOf(':');
+    if (colonIndex === -1) continue;
+    const key = line.slice(0, colonIndex).trim();
+    let value = line.slice(colonIndex + 1).trim();
+    // Handle quoted values
+    if (value.startsWith('"') && value.endsWith('"')) {
+      value = value.slice(1, -1);
+    }
+    data[key] = value;
+  }
+  return { data };
+}
 
 function shouldExclude(filePath) {
   const relativePath = path.relative(SOURCE_DIR, filePath);
   const normalized = relativePath.replace(/\\/g, '/');
-  const parts = normalized.split('/');
+  const firstDir = normalized.split('/')[0];
 
-  // Check if any parent directory is in the excluded list
-  let current = '';
-  for (const part of parts) {
-    current = current ? `${current}/${part}` : part;
-    if (EXCLUDED_DIRS.has(current)) {
-      return true;
-    }
+  // Only allow specific subdirectories
+  if (!ALLOWED_SUBDIRS.has(firstDir)) {
+    return true;
   }
 
   // Fine-grained control for 04-moments: only allow 04-moments/taste
@@ -57,9 +84,6 @@ function shouldExclude(filePath) {
     if (!normalized.startsWith('04-moments/taste')) {
       return true;
     }
-  }
-  if (normalized === '04-moments') {
-    return false;
   }
 
   // Check filename against excluded patterns
@@ -75,8 +99,8 @@ function shouldExclude(filePath) {
 
 function hasPublishFalse(content) {
   try {
-    const parsed = matter(content);
-    return parsed.data && parsed.data.publish === false;
+    const parsed = parseFrontmatter(content);
+    return parsed.data && parsed.data.publish === 'false';
   } catch (e) {
     console.error('Frontmatter parse error:', e.message);
     return false;
