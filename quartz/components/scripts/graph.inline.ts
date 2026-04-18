@@ -193,45 +193,41 @@ async function renderGraph(graph: HTMLElement, fullSlug: FullSlug) {
     {} as Record<(typeof cssVars)[number], string>,
   )
 
-  // calculate color - based on maturity status tags
+  // calculate color based on maturity status tags
   const color = (d: NodeData) => {
     const isCurrent = d.id === slug
     if (isCurrent) {
       return computedStyleMap["--secondary"]
     } else if (visited.has(d.id) || d.id.startsWith("tags/")) {
       return computedStyleMap["--tertiary"]
-    } else if (d.tags) {
-      // Check for status tags
-      if (d.tags.includes("evergreen")) {
-        return "#9c27b0" // purple - mature content
-      } else if (d.tags.includes("sapling")) {
-        return "#1976d2" // blue - growing content
-      } else if (d.tags.includes("seed")) {
-        return "#388e3c" // green - seedling content
-      }
     }
+
+    // Compute status once and reuse for color and size
+    const status = d.tags?.find(t => ["evergreen", "sapling", "seed"].includes(t))
+    if (status === "evergreen") return "#9c27b0"
+    if (status === "sapling") return "#1976d2"
+    if (status === "seed") return "#388e3c"
+
     return computedStyleMap["--gray"]
   }
 
-  function nodeRadius(d: NodeData, cfg?: D3Config) {
-    const numLinks = graphData.links.filter(
-      (l) => l.source.id === d.id || l.target.id === d.id,
+  // Pre-compute link counts once for all nodes
+  const nodeLinkCounts = new Map<string, number>()
+  for (const node of graphData.nodes) {
+    const count = graphData.links.filter(
+      (l) => l.source.id === node.id || l.target.id === node.id,
     ).length
+    nodeLinkCounts.set(node.id, count)
+  }
 
-    // Base size from link count
-    let baseSize = 2 + 1.5 * Math.log(1 + numLinks)
+  function nodeRadius(d: NodeData): number {
+    const numLinks = nodeLinkCounts.get(d.id) ?? 0
+    const baseSize = 2 + 1.5 * Math.log(1 + numLinks)
 
     // Add bonus for status tags
-    if (d.tags) {
-      if (d.tags.includes("evergreen")) {
-        baseSize += 4 // biggest nodes
-      } else if (d.tags.includes("sapling")) {
-        baseSize += 2 // medium nodes
-      } else if (d.tags.includes("seed")) {
-        baseSize += 0 // base size
-      }
-    }
-
+    const status = d.tags?.find(t => ["evergreen", "sapling", "seed"].includes(t))
+    if (status === "evergreen") return baseSize + 4
+    if (status === "sapling") return baseSize + 2
     return baseSize
   }
 
