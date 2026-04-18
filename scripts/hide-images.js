@@ -83,9 +83,10 @@ function generateHtml(images) {
     <h2>${cat} (${imgs.length}张)</h2>
     <div class="gallery">`;
     for (const img of imgs) {
+      const srcPath = img.path;  // 04-moments/category/xxx.jpg
       html += `<label class="item">
         <input type="checkbox" name="images" value="${img.path}">
-        <img src="${img.path}" alt="${img.name}">
+        <img src="content/${srcPath}" alt="${img.name}">
         <div class="name">${img.name}</div>
       </label>`;
     }
