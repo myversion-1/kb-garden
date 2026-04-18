@@ -21,6 +21,11 @@ export default {
       example: "示例",
       quote: "引用",
     },
+    statusTag: {
+      seed: "种子",
+      sapling: "幼苗",
+      evergreen: "常青",
+    },
     backlinks: {
       title: "反向链接",
       noBacklinksFound: "无法找到反向链接",

@@ -19,6 +19,7 @@ const ALLOWED_SUBDIRS = new Set([
   '02-inspiration',
   '03-reading',
   '04-moments',
+  'templates',
 ]);
 
 // Subdirectories to exclude within allowed parent dirs
@@ -40,7 +41,6 @@ const EXCLUDED_DIRS = new Set([
   '01-claude/config',
   '99-archive',
   'D:-',
-  'templates',
   'node_modules',
 ]);
 
