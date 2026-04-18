@@ -136,8 +136,8 @@ export default ((opts?: Partial<GalleryPageOptions>) => {
                 </summary>
                 <div class="gallery-grid">
                   {categoryMap.get(category)!.map((item) => {
-                    // Build the relative path to the image (../category/filename for correct resolution from /04-moments/)
-                    const imagePath = `../${category}/${item.filename}`
+                    // Build the relative path to the image (category/filename, resolved from /04-moments/)
+                    const imagePath = `${category}/${item.filename}`
                     return (
                       <div class="gallery-item">
                         <img
