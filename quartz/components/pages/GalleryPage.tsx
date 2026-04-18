@@ -136,8 +136,8 @@ export default ((opts?: Partial<GalleryPageOptions>) => {
                 </summary>
                 <div class="gallery-grid">
                   {categoryMap.get(category)!.map((item) => {
-                    // Build the relative path to the image using cleanSlug
-                    const imagePath = `${cleanSlug}/${category}/${item.filename}`
+                    // Build the relative path to the image (category/filename)
+                    const imagePath = `${category}/${item.filename}`
                     return (
                       <div class="gallery-item">
                         <img
