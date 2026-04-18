@@ -53,6 +53,7 @@ const EXCLUDED_PATTERNS = [
   /^\.env/i,                     // .env*
   /^package.*\.json$/i,         // package.json / package-lock.json
   /^CLAUDE\.md$/i,               // CLAUDE.md - 项目内部AI指导文件
+  /^photo_20260408_1775634218545\.jpg$/i, // specific private photo
 ];
 
 // Manual YAML frontmatter parsing (no external dependency)
