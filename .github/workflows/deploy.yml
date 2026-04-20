@@ -50,7 +50,7 @@ jobs:
       - name: Build Quartz
         run: |
           mv .gitignore .gitignore.bak
-          grep -v '^content' .gitignore.bak > .gitignore || true
+          grep -v '^content/' .gitignore.bak > .gitignore || true
           npx quartz build --verbose
           mv .gitignore.bak .gitignore
       

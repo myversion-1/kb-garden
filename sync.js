@@ -1,6 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import yaml from 'js-yaml';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -137,6 +138,28 @@ function hasPublishFalse(content) {
   }
 }
 
+function hasValidFrontmatter(content, filePath) {
+  if (!content.startsWith('---')) {
+    return true; // No frontmatter is valid
+  }
+  const endIndex = content.indexOf('---', 3);
+  if (endIndex === -1) {
+    console.log(`[SKIP] ${filePath} (unclosed frontmatter)`);
+    return false;
+  }
+  const fmText = content.slice(3, endIndex).trim();
+  if (!fmText) {
+    return true; // Empty frontmatter is valid
+  }
+  try {
+    yaml.load(fmText, { schema: yaml.JSON_SCHEMA });
+    return true;
+  } catch (e) {
+    console.log(`[SKIP] ${filePath} (invalid YAML frontmatter: ${e.message.replace(/\n/g, ' ')})`);
+    return false;
+  }
+}
+
 function ensureDir(dir) {
   if (!fs.existsSync(dir)) {
     fs.mkdirSync(dir, { recursive: true });
@@ -186,6 +209,10 @@ function syncDirectory(srcDir, destDir) {
 
       if (isMarkdown) {
         const content = fs.readFileSync(srcPath, 'utf-8');
+        if (!hasValidFrontmatter(content, relativePath)) {
+          skippedCount++;
+          continue;
+        }
         if (hasPublishFalse(content)) {
           console.log(`[SKIP] ${relativePath} (publish: false)`);
           skippedCount++;
