@@ -34,16 +34,17 @@ const stats = {
 
 /**
  * Extract frontmatter text from markdown content
- * Returns { frontmatter: string|null, body: string, hasFrontmatter: boolean }
+ * Returns { frontmatter: string|null, body: string, hasFrontmatter: boolean, fixedContent: string|null }
  */
 function extractFrontmatter(content) {
   if (!content.startsWith('---')) {
-    return { frontmatter: null, body: content, hasFrontmatter: false };
+    return { frontmatter: null, body: content, hasFrontmatter: false, fixedContent: null };
   }
 
   // Find the closing --- (must be on its own line)
   const lines = content.split('\n');
   let endIndex = -1;
+  let structureFixed = false;
 
   for (let i = 1; i < lines.length; i++) {
     if (lines[i].trim() === '---') {
@@ -52,8 +53,27 @@ function extractFrontmatter(content) {
     }
   }
 
+  // Check for inline closing --- (e.g., "description: text.---")
   if (endIndex === -1) {
-    return { frontmatter: null, body: content, hasFrontmatter: false, unclosed: true };
+    for (let i = 1; i < lines.length; i++) {
+      const line = lines[i];
+      const inlineClose = line.indexOf('---');
+      if (inlineClose !== -1 && inlineClose > 0) {
+        // Split the line at ---
+        const beforeClose = line.slice(0, inlineClose);
+        const afterClose = line.slice(inlineClose + 3);
+        lines[i] = beforeClose;
+        // Insert --- on next line and shift rest
+        lines.splice(i + 1, 0, '---', afterClose);
+        endIndex = i + 1;
+        structureFixed = true;
+        break;
+      }
+    }
+  }
+
+  if (endIndex === -1) {
+    return { frontmatter: null, body: content, hasFrontmatter: false, fixedContent: null, unclosed: true };
   }
 
   const frontmatterLines = lines.slice(1, endIndex);
@@ -63,6 +83,7 @@ function extractFrontmatter(content) {
     frontmatter: frontmatterLines.join('\n'),
     body: bodyLines.join('\n'),
     hasFrontmatter: true,
+    fixedContent: structureFixed ? lines.join('\n') : null,
     unclosed: false,
   };
 }
@@ -226,6 +247,28 @@ function processFile(filePath) {
   }
 
   const extracted = extractFrontmatter(content);
+
+  // Handle inline --- structure fix first
+  if (extracted.fixedContent) {
+    console.log(`[FIX]   ${relativePath} - inline --- detected, fixing structure`);
+    try {
+      fs.writeFileSync(filePath, extracted.fixedContent, 'utf-8');
+      console.log(`[OK]    ${relativePath} - structure fixed`);
+      stats.fixed++;
+    } catch (e) {
+      console.error(`[ERROR] ${relativePath} - failed to write: ${e.message}`);
+      stats.errors++;
+    }
+    // Re-read and re-process to check if YAML also needs fixing
+    content = fs.readFileSync(filePath, 'utf-8');
+    const reExtracted = extractFrontmatter(content);
+    if (isValidYaml(reExtracted.frontmatter)) {
+      return;
+    }
+    // Continue to YAML fix below
+    extracted.frontmatter = reExtracted.frontmatter;
+    extracted.body = reExtracted.body;
+  }
 
   if (!extracted.hasFrontmatter) {
     if (extracted.unclosed) {
