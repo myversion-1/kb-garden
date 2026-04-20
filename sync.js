@@ -1,7 +1,6 @@
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
-import yaml from 'js-yaml';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -138,28 +137,6 @@ function hasPublishFalse(content) {
   }
 }
 
-function hasValidFrontmatter(content, filePath) {
-  if (!content.startsWith('---')) {
-    return true; // No frontmatter is valid
-  }
-  const endIndex = content.indexOf('---', 3);
-  if (endIndex === -1) {
-    console.log(`[SKIP] ${filePath} (unclosed frontmatter)`);
-    return false;
-  }
-  const fmText = content.slice(3, endIndex).trim();
-  if (!fmText) {
-    return true; // Empty frontmatter is valid
-  }
-  try {
-    yaml.load(fmText, { schema: yaml.JSON_SCHEMA });
-    return true;
-  } catch (e) {
-    console.log(`[SKIP] ${filePath} (invalid YAML frontmatter: ${e.message.replace(/\n/g, ' ')})`);
-    return false;
-  }
-}
-
 function ensureDir(dir) {
   if (!fs.existsSync(dir)) {
     fs.mkdirSync(dir, { recursive: true });
@@ -208,21 +185,29 @@ function syncDirectory(srcDir, destDir) {
       }
 
       if (isMarkdown) {
-        const content = fs.readFileSync(srcPath, 'utf-8');
-        if (!hasValidFrontmatter(content, relativePath)) {
-          skippedCount++;
-          continue;
-        }
+        let content = fs.readFileSync(srcPath, 'utf-8');
         if (hasPublishFalse(content)) {
           console.log(`[SKIP] ${relativePath} (publish: false)`);
           skippedCount++;
           continue;
         }
-      }
 
-      const destPath = path.join(destDir, entry.name);
-      ensureDir(destDir);
-      fs.copyFileSync(srcPath, destPath);
+        // Fix image paths referencing 04-moments: remove redundant 04-moments/ prefix
+        // This applies to ALL markdown files, not just those inside 04-moments/
+        // Handles both image syntax ![alt](path) and link syntax [text](path)
+        content = content.replace(
+          /(!?\[([^\]]*)\])\(04-moments\/([^)]+)\)/g,
+          '$1($3)'
+        );
+
+        const destPath = path.join(destDir, entry.name);
+        ensureDir(destDir);
+        fs.writeFileSync(destPath, content, 'utf-8');
+      } else {
+        const destPath = path.join(destDir, entry.name);
+        ensureDir(destDir);
+        fs.copyFileSync(srcPath, destPath);
+      }
       console.log(`[SYNC] ${relativePath}`);
       syncedCount++;
     }
