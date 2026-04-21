@@ -20,10 +20,10 @@ title: 欢迎来到我的数字花园 / Welcome to My Digital Garden
 
 | 角落 Corner | 内容 Content | 成熟度 Maturity |
 |------|------|--------|
-| [📝 书桌 Desk](./01-claude/) | 关于 Claude、工具与 AI 协作的深度思考<br>*Deep thoughts on Claude, tools & AI collaboration* | 常青 Evergreen / 幼苗 Sapling |
-| [🛠️ 工作台 Workbench](./02-inspiration/) | 日常灵感、对话记录与探索实验<br>*Daily inspiration, dialogues & experiments* | 种子为主 Mostly Seeds |
-| [📚 书架 Bookshelf](./03-reading/) | 阅读笔记与文学感悟<br>*Reading notes & literary reflections* | 幼苗 Sapling / 常青 Evergreen |
-| [📸 展厅 Gallery](./04-moments/) | 触动我的瞬间——影像、味觉与生活碎片<br>*Moments that moved me — images, taste & life fragments* | 种子为主 Mostly Seeds |
+| [📝 书桌 Desk](./01-claude/) | 关于 Claude、工具与 AI 协作的深度思考 / Deep thoughts on Claude, tools & AI collaboration | 常青 Evergreen / 幼苗 Sapling |
+| [🛠️ 工作台 Workbench](./02-inspiration/) | 日常灵感、对话记录与探索实验 / Daily inspiration, dialogues & experiments | 种子为主 Mostly Seeds |
+| [📚 书架 Bookshelf](./03-reading/) | 阅读笔记与文学感悟 / Reading notes & literary reflections | 幼苗 Sapling / 常青 Evergreen |
+| [📸 展厅 Gallery](./04-moments/) | 触动我的瞬间——影像、味觉与生活碎片 / Moments that moved me — images, taste & life fragments | 种子为主 Mostly Seeds |
 
 > 笔记的成熟度用标签标记：🌱 种子 Seed（初步想法）、🌿 幼苗 Sapling（已整理）、🌲 常青 Evergreen（成熟观点）。
 >
@@ -32,15 +32,6 @@ title: 欢迎来到我的数字花园 / Welcome to My Digital Garden
 > 在右侧的关系图谱中，你可以看到它们如何彼此连接。
 >
 > *In the graph on the right, you can see how they connect.*
-
----
-
-## 最近更新 / Recent Notes
-
-- [[03-reading/2026/04-17-012623-流俗地-读后感|《流俗地》读后感]] — 黎紫书笔下的人性与社会
-- [[02-inspiration/2026/04-08-technology-self|技术镜像中的主体性思考]] — 在数字化时代保持人的温度
-- [[04-moments/taste|Taste Log]] — 思维框架与认知成长的记录
-- [[01-claude/insights/cost_analysis|Claude Code CLI 成本优化]] — 重度使用者的方案对比
 
 ---
 
