@@ -22,8 +22,21 @@ export const defaultContentPageLayout: PageLayout = {
       condition: (page) => page.fileData.slug !== "index",
     }),
     Component.ArticleTitle(),
+    Component.ConditionalRender({
+      component: Component.GardenStats(),
+      condition: (page) => page.fileData.slug === "index",
+    }),
     Component.ContentMeta(),
     Component.TagList(),
+    Component.ConditionalRender({
+      component: Component.RecentNotes({
+        title: "最近更新 / Recent Notes",
+        limit: 5,
+        showTags: true,
+        filter: (f) => !f.slug?.endsWith("index"),
+      }),
+      condition: (page) => page.fileData.slug === "index",
+    }),
   ],
   left: [
     Component.PageTitle(),

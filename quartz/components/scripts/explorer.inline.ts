@@ -195,6 +195,19 @@ async function setupExplorer(currentSlug: FullSlug) {
       }
     }
 
+    // Flatten year directories (e.g., 2026/) — show files directly under section
+    function flattenYears(node: any) {
+      for (let i = node.children.length - 1; i >= 0; i--) {
+        const child = node.children[i]
+        if (child.isFolder && /^\d{4}$/.test(child.slugSegment)) {
+          node.children.splice(i, 1, ...child.children)
+        } else {
+          flattenYears(child)
+        }
+      }
+    }
+    flattenYears(trie)
+
     // Get folder paths for state management
     const folderPaths = trie.getFolderPaths()
     currentExplorerState = folderPaths.map((path) => {

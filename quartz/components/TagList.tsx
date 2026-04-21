@@ -3,6 +3,14 @@ import { QuartzComponent, QuartzComponentConstructor, QuartzComponentProps } fro
 import { classNames } from "../util/lang"
 
 const STATUS_TAGS = ["seed", "sapling", "evergreen"]
+const SOURCE_TAGS = ["telegram"]
+
+const TAG_DISPLAY: Record<string, string> = {
+  seed: "🌱 seed",
+  sapling: "🌿 sapling",
+  evergreen: "🌲 evergreen",
+  telegram: "🤖 telegram",
+}
 
 const TagList: QuartzComponent = ({ fileData, displayClass }: QuartzComponentProps) => {
   const tags = fileData.frontmatter?.tags
@@ -12,11 +20,19 @@ const TagList: QuartzComponent = ({ fileData, displayClass }: QuartzComponentPro
         {tags.map((tag) => {
           const linkDest = resolveRelative(fileData.slug!, `tags/${tag}` as FullSlug)
           const isStatusTag = STATUS_TAGS.includes(tag)
-          const tagClass = isStatusTag ? `status-tag status-${tag}` : "tag-link"
+          const isSourceTag = SOURCE_TAGS.includes(tag)
+          let tagClass: string
+          if (isStatusTag) {
+            tagClass = `status-tag status-${tag}`
+          } else if (isSourceTag) {
+            tagClass = "source-tag"
+          } else {
+            tagClass = "tag-link"
+          }
           return (
             <li>
               <a href={linkDest} class={classNames("internal", tagClass)}>
-                {isStatusTag ? `${tag} 🔰` : tag}
+                {TAG_DISPLAY[tag] || tag}
               </a>
             </li>
           )
@@ -76,6 +92,15 @@ a.internal.status-sapling {
 a.internal.status-evergreen {
   background-color: #e1bee7;
   color: #6a1b9a;
+}
+
+a.internal.source-tag {
+  border-radius: 12px;
+  padding: 0.2rem 0.5rem;
+  font-weight: 500;
+  background-color: var(--lightgray);
+  color: var(--darkgray);
+  font-size: 0.85em;
 }
 `
 

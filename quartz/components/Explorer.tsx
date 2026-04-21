@@ -27,7 +27,17 @@ const defaultOptions: Options = {
   folderClickBehavior: "link",
   useSavedState: true,
   mapFn: (node) => {
-    return node
+    const names: Record<string, string> = {
+      "01-claude": "思考 Think",
+      "02-inspiration": "灵感 Spark",
+      "03-reading": "阅读 Read",
+      "04-moments": "生活 Life",
+      "insights": "洞察 Insights",
+      "taste": "品味 Taste",
+    }
+    if (names[node.slugSegment]) {
+      node.displayName = names[node.slugSegment]
+    }
   },
   sortFn: (a, b) => {
     // Sort order: folders first, then files. Sort folders and files alphabeticall
