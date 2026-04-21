@@ -24,12 +24,6 @@
     <description><![CDATA[ A moment of unexpected beauty in the city. ]]></description>
     <pubDate>Sun, 19 Apr 2026 00:00:00 GMT</pubDate>
   </item><item>
-    <title>Simple Desires: Vegetables and Protein</title>
-    <link>https://myversion-1.github.io/kb-garden/04-moments/taste/04-18-054552-simple-desires-vegetables-and-protein</link>
-    <guid>https://myversion-1.github.io/kb-garden/04-moments/taste/04-18-054552-simple-desires-vegetables-and-protein</guid>
-    <description><![CDATA[ A reflection on the joy of a simple meal. ]]></description>
-    <pubDate>Sat, 18 Apr 2026 00:00:00 GMT</pubDate>
-  </item><item>
     <title>Homemade Beef Meatball Soup</title>
     <link>https://myversion-1.github.io/kb-garden/04-moments/taste/04-18-072151-homemade-beef-meatball-soup</link>
     <guid>https://myversion-1.github.io/kb-garden/04-moments/taste/04-18-072151-homemade-beef-meatball-soup</guid>
@@ -65,6 +59,12 @@
     <guid>https://myversion-1.github.io/kb-garden/01-claude/insights/README</guid>
     <description><![CDATA[ Claude 使用洞察报告 本目录包含 Claude Code CLI 的使用分析和成本优化报告。 文件说明 文件说明cost_analysis.md成本优化方案对比usage-report.html使用数据可视化报告 更新时间 配置备份: 2026-03-18 成本分析: 2026-03-16 查看报告 在浏览器中打开 usage-report.html 查看详细使用统计。. ]]></description>
     <pubDate>Fri, 17 Apr 2026 07:50:33 GMT</pubDate>
+  </item><item>
+    <title>Educational Incentives and Rewards</title>
+    <link>https://myversion-1.github.io/kb-garden/02-inspiration/2026/04-17-011121-educational-incentives-and-rewards</link>
+    <guid>https://myversion-1.github.io/kb-garden/02-inspiration/2026/04-17-011121-educational-incentives-and-rewards</guid>
+    <description><![CDATA[ A mother's unique approach to motivating her child's academic performance. ]]></description>
+    <pubDate>Fri, 17 Apr 2026 00:00:00 GMT</pubDate>
   </item>
     </channel>
   </rss>
