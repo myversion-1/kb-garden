@@ -6,6 +6,12 @@
       <description>最近的10条笔记 / Last 10 notes on KB Garden</description>
       <generator>Quartz -- quartz.jzhao.xyz</generator>
       <item>
+    <title>index</title>
+    <link>https://myversion-1.github.io/kb-garden/</link>
+    <guid>https://myversion-1.github.io/kb-garden/</guid>
+    <description><![CDATA[  欢迎来到我的数字花园 / Welcome to My Digital Garden &gt; 这里是我存放思考的地方。 &gt; &gt; Where I keep my thoughts. ]]></description>
+    <pubDate>Tue, 21 Apr 2026 09:31:28 GMT</pubDate>
+  </item><item>
     <title>Ancient Architecture with Red Lanterns</title>
     <link>https://myversion-1.github.io/kb-garden/04-moments/taste/04-21-072948-ancient-architecture-with-red-lanterns</link>
     <guid>https://myversion-1.github.io/kb-garden/04-moments/taste/04-21-072948-ancient-architecture-with-red-lanterns</guid>
@@ -59,12 +65,6 @@
     <guid>https://myversion-1.github.io/kb-garden/04-moments/taste/04-21-072948-ye-ting-s-independent-regiment-memorial-hall</guid>
     <description><![CDATA[ A visit to the Ye Ting's Independent Regiment Memorial Hall. ]]></description>
     <pubDate>Tue, 21 Apr 2026 00:00:00 GMT</pubDate>
-  </item><item>
-    <title>taste</title>
-    <link>https://myversion-1.github.io/kb-garden/04-moments/taste</link>
-    <guid>https://myversion-1.github.io/kb-garden/04-moments/taste</guid>
-    <description><![CDATA[ Taste Log 2026/03/20 16:08 — [温开水是最好的饮品] what’s repeating?- 2026/03/21 10:10 — 咖啡适合在早晨而不是下午或其之后喝 what’s repeating?- 2026/03/21 17:03 — 高不确定性意味着高信息价值 2026/03/21 17:21 — 三个框架协同：古德哈特告诉你不要做什么（不要让指标成为目标）；SDT告诉你环境需要满足什么（三种基本需求）；WOOP告诉你如何把好的意图转化为实际行动（心理对比+执行意图）。整合后是一个完整的学习设计原则。 2026/03/21 17:27 — 关于重要概念：贝叶... ]]></description>
-    <pubDate>Mon, 20 Apr 2026 03:27:25 GMT</pubDate>
   </item>
     </channel>
   </rss>
