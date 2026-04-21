@@ -230,10 +230,14 @@ function main() {
 
   const { synced, skipped } = syncDirectory(SOURCE_DIR, CONTENT_DIR);
 
-  // Copy README.md from source root as index.md (home page)
+  // Set up home page: prefer source index.md, fallback to README.md
+  const sourceIndexPath = path.join(SOURCE_DIR, 'index.md');
   const sourceReadmePath = path.join(SOURCE_DIR, 'README.md');
   const indexPath = path.join(CONTENT_DIR, 'index.md');
-  if (fs.existsSync(sourceReadmePath)) {
+  if (fs.existsSync(sourceIndexPath)) {
+    fs.copyFileSync(sourceIndexPath, indexPath);
+    console.log('[INFO] Copied index.md -> index.md');
+  } else if (fs.existsSync(sourceReadmePath)) {
     fs.copyFileSync(sourceReadmePath, indexPath);
     console.log('[INFO] Copied README.md -> index.md');
   }
