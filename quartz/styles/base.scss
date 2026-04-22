@@ -519,31 +519,29 @@ p {
 
 .table-container {
   overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+  margin: 1rem 0;
 
   & > table {
-    margin: 1rem;
-    padding: 1.5rem;
-    border-collapse: collapse;
-
-    th,
-    td {
-      min-width: 75px;
-    }
-
-    & > * {
-      line-height: 2rem;
-    }
+    min-width: 500px;
+    width: 100%;
+    margin: 0;
+    padding: 1rem;
+    font-size: 0.9em;
   }
 }
 
 th {
   text-align: left;
-  padding: 0.4rem 0.7rem;
+  padding: 0.5rem 0.75rem;
   border-bottom: 2px solid var(--gray);
+  word-break: break-word;
 }
 
 td {
-  padding: 0.2rem 0.7rem;
+  padding: 0.5rem 0.75rem;
+  word-break: break-word;
 }
 
 tr {
