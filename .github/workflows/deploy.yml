@@ -18,12 +18,12 @@ jobs:
       contents: write
     steps:
       - name: Checkout kb-garden
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           fetch-depth: 0
 
       - name: Checkout private KB-GH
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           repository: myversion-1/KB-GH
           token: ${{ secrets.KB_GH_PAT }}
@@ -31,7 +31,7 @@ jobs:
           fetch-depth: 1
 
       - name: Setup Node
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v6
         with:
           node-version: 22
           cache: 'npm'
