@@ -192,26 +192,12 @@ function syncDirectory(srcDir, destDir) {
           continue;
         }
 
-        // Fix image paths referencing 04-moments: compute correct relative path from md file location
-        const mdDir = path.dirname(relativePath); // e.g. 04-moments/taste
+        // Fix image paths referencing 04-moments: use absolute paths from site root
+        // This ensures images load correctly regardless of page URL (SPA mode, pretty URLs, etc.)
         content = content.replace(
           /(!?\[([^\]]*)\])\((?:\.)?\/??04-moments\/([^)]+)\)/g,
           (match, prefix, alt, imgPath) => {
-            const fullImgPath = `04-moments/${imgPath}`;
-            const imgDir = path.dirname(fullImgPath);
-            const imgFile = path.basename(fullImgPath);
-
-            if (mdDir === imgDir) {
-              // Same directory: use explicit relative path
-              return `${prefix}(./${imgFile})`;
-            } else {
-              // Different directory: compute relative path
-              let rel = path.relative(mdDir, fullImgPath).replace(/\\/g, '/');
-              if (!rel.startsWith('.') && !rel.startsWith('/')) {
-                rel = './' + rel;
-              }
-              return `${prefix}(${rel})`;
-            }
+            return `${prefix}(/04-moments/${imgPath})`;
           }
         );
 
