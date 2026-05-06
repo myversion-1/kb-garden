@@ -192,12 +192,27 @@ function syncDirectory(srcDir, destDir) {
           continue;
         }
 
-        // Fix image paths referencing 04-moments: remove redundant 04-moments/ prefix
-        // This applies to ALL markdown files, not just those inside 04-moments/
-        // Handles both image syntax ![alt](path) and link syntax [text](path)
+        // Fix image paths referencing 04-moments: compute correct relative path from md file location
+        const mdDir = path.dirname(relativePath); // e.g. 04-moments/taste
         content = content.replace(
-          /(!?\[([^\]]*)\])\(04-moments\/([^)]+)\)/g,
-          '$1($3)'
+          /(!?\[([^\]]*)\])\((?:\.)?\/??04-moments\/([^)]+)\)/g,
+          (match, prefix, alt, imgPath) => {
+            const fullImgPath = `04-moments/${imgPath}`;
+            const imgDir = path.dirname(fullImgPath);
+            const imgFile = path.basename(fullImgPath);
+
+            if (mdDir === imgDir) {
+              // Same directory: just use the filename
+              return `${prefix}(${imgFile})`;
+            } else {
+              // Different directory: compute relative path
+              let rel = path.relative(mdDir, fullImgPath).replace(/\\/g, '/');
+              if (!rel.startsWith('.') && !rel.startsWith('/')) {
+                rel = './' + rel;
+              }
+              return `${prefix}(${rel})`;
+            }
+          }
         );
 
         const destPath = path.join(destDir, entry.name);
