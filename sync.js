@@ -202,8 +202,8 @@ function syncDirectory(srcDir, destDir) {
             const imgFile = path.basename(fullImgPath);
 
             if (mdDir === imgDir) {
-              // Same directory: just use the filename
-              return `${prefix}(${imgFile})`;
+              // Same directory: use explicit relative path
+              return `${prefix}(./${imgFile})`;
             } else {
               // Different directory: compute relative path
               let rel = path.relative(mdDir, fullImgPath).replace(/\\/g, '/');
