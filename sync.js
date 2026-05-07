@@ -192,13 +192,15 @@ function syncDirectory(srcDir, destDir) {
           continue;
         }
 
-        // Fix image paths referencing 04-moments: use absolute paths from site root
-        // Must include /kb-garden/ prefix because GitHub Pages project sites deploy to a subpath
-        // SPA mode + pretty URLs mean relative paths resolve against 404.html, not the content page
+        // Fix image paths referencing 04-moments: use full absolute URL
+        // GitHub Pages project sites deploy to a subpath (/kb-garden/).
+        // SPA mode + pretty URLs mean relative paths resolve against 404.html, not the content page.
+        // Quartz CrawlLinks treats /kb-garden/... as a relative path and rewrites it incorrectly.
+        // Only a full https:// URL is left untouched by Quartz.
         content = content.replace(
           /(!?\[([^\]]*)\])\((?:\.)?\/??04-moments\/([^)]+)\)/g,
           (match, prefix, alt, imgPath) => {
-            return `${prefix}(/kb-garden/04-moments/${imgPath})`;
+            return `${prefix}(https://myversion-1.github.io/kb-garden/04-moments/${imgPath})`;
           }
         );
 
