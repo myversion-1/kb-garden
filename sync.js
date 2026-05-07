@@ -193,11 +193,12 @@ function syncDirectory(srcDir, destDir) {
         }
 
         // Fix image paths referencing 04-moments: use absolute paths from site root
-        // This ensures images load correctly regardless of page URL (SPA mode, pretty URLs, etc.)
+        // Must include /kb-garden/ prefix because GitHub Pages project sites deploy to a subpath
+        // SPA mode + pretty URLs mean relative paths resolve against 404.html, not the content page
         content = content.replace(
           /(!?\[([^\]]*)\])\((?:\.)?\/??04-moments\/([^)]+)\)/g,
           (match, prefix, alt, imgPath) => {
-            return `${prefix}(/04-moments/${imgPath})`;
+            return `${prefix}(/kb-garden/04-moments/${imgPath})`;
           }
         );
 
