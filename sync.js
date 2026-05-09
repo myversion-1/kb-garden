@@ -16,9 +16,17 @@ const CONTENT_DIR = path.resolve(__dirname, 'content');
 // Allowed directories for sync (digital garden content)
 const ALLOWED_SUBDIRS = new Set([
   '01-claude',
-  '02-inspiration',
-  '03-reading',
+  '02-cooking',
+  '03-journal',
+  '04-inspiration',
   '04-moments',
+  '05-reading',
+  '06-learning',
+  '07-projects',
+  '08-health',
+  '09-tech',
+  '10-life',
+  '20-bookmarks',
   'templates',
 ]);
 
