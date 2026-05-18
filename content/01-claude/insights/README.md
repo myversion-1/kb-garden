@@ -1,3 +1,8 @@
+---
+title: Claude 使用洞察报告
+description: Claude Code CLI 的使用分析和成本优化报告索引。
+---
+
 # Claude 使用洞察报告
 
 本目录包含 Claude Code CLI 的使用分析和成本优化报告。

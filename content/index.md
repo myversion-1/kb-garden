@@ -1,14 +1,11 @@
 ---
 title: 欢迎来到我的数字花园 / Welcome to My Digital Garden
+description: Sharon 的数字花园——存放思考的地方，没有精心策划的内容策略，只有真实的记录。
 ---
 
 > 这里是我存放思考的地方。
 >
-> *Where I keep my thoughts.*
->
 > 没有精心策划的"内容策略"，只有真实的记录：从一段偶然读到的句子，到一次深夜的思考；从游泳时的灵感，到与 AI 的对话。
->
-> *No curated content strategy, just authentic records: from a sentence stumbled upon, to a late-night reflection; from inspiration while swimming, to conversations with AI.*
 
 ---
 
@@ -16,22 +13,16 @@ title: 欢迎来到我的数字花园 / Welcome to My Digital Garden
 
 这个花园有四个角落，各自生长着不同形态的笔记：
 
-*Four corners, each growing notes of different forms:*
-
-| 角落 Corner | 内容 Content | 成熟度 Maturity |
+| 角落 | 内容 | 成熟度 |
 |------|------|--------|
-| [📝 书桌 Desk](./01-claude/) | 关于 Claude、工具与 AI 协作的深度思考 / Deep thoughts on Claude, tools & AI collaboration | 常青 Evergreen / 幼苗 Sapling |
-| [🛠️ 工作台 Workbench](./02-inspiration/) | 日常灵感、对话记录与探索实验 / Daily inspiration, dialogues & experiments | 种子为主 Mostly Seeds |
-| [📚 书架 Bookshelf](./03-reading/) | 阅读笔记与文学感悟 / Reading notes & literary reflections | 幼苗 Sapling / 常青 Evergreen |
-| [📸 展厅 Gallery](./04-moments/) | 触动我的瞬间——影像、味觉与生活碎片 / Moments that moved me — images, taste & life fragments | 种子为主 Mostly Seeds |
+| [书桌 Desk](./01-claude/) | 关于 Claude、工具与 AI 协作的深度思考 | 常青 / 幼苗 |
+| [工作台 Workbench](./02-inspiration/) | 日常灵感、对话记录与探索实验 | 种子为主 |
+| [书架 Bookshelf](./03-reading/) | 阅读笔记与文学感悟 | 幼苗 / 常青 |
+| [展厅 Gallery](./04-moments/) | 触动我的瞬间——影像、味觉与生活碎片 | 种子为主 |
 
-> 笔记的成熟度用标签标记：🌱 种子 Seed（初步想法）、🌿 幼苗 Sapling（已整理）、🌲 常青 Evergreen（成熟观点）。
->
-> *Notes are tagged by maturity: 🌱 Seed (raw idea), 🌿 Sapling (organized), 🌲 Evergreen (mature insight).*
+> 笔记的成熟度用标签标记：种子（初步想法）、幼苗（已整理）、常青（成熟观点）。
 >
 > 在右侧的关系图谱中，你可以看到它们如何彼此连接。
->
-> *In the graph on the right, you can see how they connect.*
 
 ---
 
@@ -39,14 +30,10 @@ title: 欢迎来到我的数字花园 / Welcome to My Digital Garden
 
 这是一座**数字花园**（Digital Garden）——笔记以不同的成熟度公开生长，通过双向链接彼此连接。
 
-*A **Digital Garden** — notes grow publicly at different stages of maturity, connected through bidirectional links.*
-
-你可以 / *You can:*
-- 点击任意 [[双向链接]] 在笔记间漫游 / *Click any [[bidirectional link]] to roam between notes*
-- 使用右上角的搜索框查找特定内容 / *Use the search box to find specific content*
-- 在右侧图谱中拖拽、缩放，探索笔记之间的关联 / *Drag and zoom the graph to explore connections*
-- 切换深色/浅色模式，或进入阅读模式 / *Toggle dark/light mode, or enter reader mode*
+你可以：
+- 点击任意 [[双向链接]] 在笔记间漫游
+- 使用右上角的搜索框查找特定内容
+- 在右侧图谱中拖拽、缩放，探索笔记之间的关联
+- 切换深色/浅色模式，或进入阅读模式
 
 > 花园始于 2026 年 3 月，持续生长中。
->
-> *The garden began in March 2026 and continues to grow.*

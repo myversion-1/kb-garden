@@ -10,3 +10,5 @@ private/
 .replit
 replit.nix
 .aider*
+.claude/
+kb-gh-source/

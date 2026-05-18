@@ -1,6 +1,7 @@
 ---
 title: Claude Code CLI 成本优化方案
 tags: [evergreen]
+description: 对比 OpenRouter、Moonshot、DeepSeek 官方等渠道的模型价格，给出重度使用场景下的最优成本方案，月省可达 50-60%。
 ---
 
 # Claude Code CLI 成本优化方案
