@@ -36,14 +36,8 @@ const EXCLUDED_SUBDIRS = new Set([
   'memory',     // 01-claude/memory - 私人记忆
   'config',     // 01-claude/config - 配置
   'skills',     // 01-claude/skills - 技能定义
-  'people',     // 04-moments/people - 人脸照片
-  'screenshot', // 04-moments/screenshot - 聊天记录截图等敏感截图
-  'food',       // 04-moments/food - 纯图片，无对应 markdown 页面
-  'art',        // 04-moments/art - 纯图片
-  'document',   // 04-moments/document - 纯图片
-  'landscape',  // 04-moments/landscape - 纯图片
-  'images',     // 04-moments/images - 纯图片
-  'misc',       // 04-moments/misc - 纯图片
+  'people',     // 04-moments/people - 人脸照片（隐私）
+  'screenshot', // 04-moments/screenshot - 聊天记录截图（隐私）
 ]);
 
 // Path blacklist: these directories/files are NEVER synced (unless explicitly allowed)
@@ -259,13 +253,13 @@ function syncDirectory(srcDir, destDir) {
           continue;
         }
 
-        // Fix image paths referencing 04-moments: use jsDelivr CDN URL
-        // Images are stored in KB-GH repo, not synced to garden (company PC privacy constraint).
-        // jsDelivr CDN loads directly from GitHub, bypassing local storage entirely.
+        // Fix image paths referencing 04-moments: use garden site URL
+        // GitHub Pages project sites deploy to a subpath (/kb-garden/).
+        // SPA mode + pretty URLs mean relative paths resolve against 404.html, not the content page.
         content = content.replace(
           /(!?\[([^\]]*)\])\((?:\.)?\/??04-moments\/([^)]+)\)/g,
           (match, prefix, alt, imgPath) => {
-            return `${prefix}(https://cdn.jsdelivr.net/gh/myversion-1/KB-GH@main/04-moments/${imgPath})`;
+            return `${prefix}(https://myversion-1.github.io/kb-garden/04-moments/${imgPath})`;
           }
         );
 
