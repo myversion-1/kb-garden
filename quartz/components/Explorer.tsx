@@ -32,6 +32,9 @@ const defaultOptions: Options = {
       "02-inspiration": "灵感 Spark",
       "03-reading": "阅读 Read",
       "04-moments": "生活 Life",
+      "05-reading": "读统 Stats",
+      "05-reports": "周报 Weekly",
+      "08-health": "健康 Health",
       "insights": "洞察 Insights",
       "taste": "品味 Taste",
       "2026": "2026",
@@ -49,7 +52,10 @@ const defaultOptions: Options = {
         "思考 Think": 1,
         "灵感 Spark": 2,
         "阅读 Read": 3,
-        "生活 Life": 4,
+        "读统 Stats": 4,
+        "生活 Life": 5,
+        "周报 Weekly": 6,
+        "健康 Health": 7,
       }
       const aPriority = priority[a.displayName] ?? 99
       const bPriority = priority[b.displayName] ?? 99
