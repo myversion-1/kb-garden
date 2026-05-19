@@ -34,16 +34,29 @@ const defaultOptions: Options = {
       "04-moments": "生活 Life",
       "insights": "洞察 Insights",
       "taste": "品味 Taste",
+      "2026": "2026",
+      "README": "关于 About",
     }
     if (names[node.slugSegment]) {
       node.displayName = names[node.slugSegment]
     }
   },
   sortFn: (a, b) => {
-    // Sort order: folders first, then files. Sort folders and files alphabeticall
+    // Custom sort: directories first, then by defined priority order
     if ((!a.isFolder && !b.isFolder) || (a.isFolder && b.isFolder)) {
-      // numeric: true: Whether numeric collation should be used, such that "1" < "2" < "10"
-      // sensitivity: "base": Only strings that differ in base letters compare as unequal. Examples: a ≠ b, a = á, a = A
+      // Priority order for top-level sections
+      const priority: Record<string, number> = {
+        "思考 Think": 1,
+        "灵感 Spark": 2,
+        "阅读 Read": 3,
+        "生活 Life": 4,
+      }
+      const aPriority = priority[a.displayName] ?? 99
+      const bPriority = priority[b.displayName] ?? 99
+      if (aPriority !== bPriority) {
+        return aPriority - bPriority
+      }
+      // Fall back to alphabetical for same priority
       return a.displayName.localeCompare(b.displayName, undefined, {
         numeric: true,
         sensitivity: "base",
@@ -56,7 +69,7 @@ const defaultOptions: Options = {
       return -1
     }
   },
-  filterFn: (node) => node.slugSegment !== "tags",
+  filterFn: (node) => node.slugSegment !== "tags" && node.slugSegment !== "templates",
   order: ["filter", "map", "sort"],
 }
 
