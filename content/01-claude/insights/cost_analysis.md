@@ -6,7 +6,7 @@ description: 对比 OpenRouter、Moonshot、DeepSeek 官方等渠道的模型价
 
 # Claude Code CLI 成本优化方案
 
-这是一篇关于 [AI协作工具成本优化](./04-moments/taste) 的深度思考。
+这是一篇关于 [AI协作工具成本优化](https://myversion-1.github.io/kb-garden/04-moments/taste) 的深度思考。
 - **主要模型**: moonshotai/kimi-k2.5 (~$12/百万输出 tokens)
 - **推理模型**: deepseek/deepseek-r1 (~$7.25/百万输出 tokens)
 - **使用级别**: 重度 (>50万 tokens/天)

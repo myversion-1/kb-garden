@@ -7,9 +7,9 @@ tags:
   - self-reflection
 publish: true
 source: telegram
-description: 关于"命好"的轻松讨论截图，今日认证：顶级好命。
+description: 关于"命好"的轻松讨论截图，今日认证：顶级好命📷
 ---
 
-2026/04/16 11:38 📷 [命好讨论截图](04-moments/screenshot/命好讨论截图_20260416_1776310714386.jpg) | 今日认证：本人是顶级好命
+2026/04/16 11:38 📷 命好讨论截图 | 今日认证：本人是顶级好命
 
-> 记录于 [[04-moments/taste|Taste Log]]
+> 记录📷[[04-moments/taste|Taste Log]]

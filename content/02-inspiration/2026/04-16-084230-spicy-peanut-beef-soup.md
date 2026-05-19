@@ -8,9 +8,9 @@ tags:
   - spicy
 publish: true
 source: telegram
-description: 牛肉汤配辣椒花生的美食记录，辣味与花生的碰撞。
+description: 牛肉汤配辣椒花生的美食记录，辣味与花生的碰撞📷
 ---
 
-2026/04/15 13:34 📷 [牛肉汤配辣椒花生](04-moments/food/牛肉汤配辣椒花生_20260415_1776231255009.jpg)
+2026/04/15 13:34 📷 牛肉汤配辣椒花生
 
-> 记录于 [[04-moments/taste|Taste Log]]
+> 记录📷[[04-moments/taste|Taste Log]]

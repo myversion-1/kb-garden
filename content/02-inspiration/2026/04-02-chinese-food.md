@@ -9,7 +9,7 @@ description: 归档自 inbox 的美食记录
 
 # 中式餐点
 
-![中式餐点](https://raw.githubusercontent.com/myversion-1/KB-GH/main/04-moments/food/中式餐点_20260402_1775105355670.jpg)
+![中式餐点](https://myversion-1.github.io/kb-garden/04-moments/food/中式餐点_20260402_1775105355670.jpg)
 
 > 2026/04/02 12:49 📷 中式餐点
 
