@@ -26,6 +26,10 @@ export const defaultContentPageLayout: PageLayout = {
       component: Component.GardenStats(),
       condition: (page) => page.fileData.slug === "index",
     }),
+    Component.ConditionalRender({
+      component: Component.RecentUpdates(),
+      condition: (page) => page.fileData.slug === "index",
+    }),
     Component.ContentMeta(),
     Component.TagList(),
   ],

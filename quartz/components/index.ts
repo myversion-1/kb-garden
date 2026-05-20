@@ -20,6 +20,7 @@ import Footer from "./Footer"
 import DesktopOnly from "./DesktopOnly"
 import MobileOnly from "./MobileOnly"
 import RecentNotes from "./RecentNotes"
+import RecentUpdates from "./RecentUpdates"
 import GardenStats from "./GardenStats"
 import Breadcrumbs from "./Breadcrumbs"
 import Comments from "./Comments"
@@ -48,6 +49,7 @@ export {
   DesktopOnly,
   MobileOnly,
   RecentNotes,
+  RecentUpdates,
   GardenStats,
   NotFound,
   Breadcrumbs,
