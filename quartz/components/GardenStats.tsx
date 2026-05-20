@@ -1,6 +1,5 @@
 import { QuartzComponent, QuartzComponentConstructor, QuartzComponentProps } from "./types"
 import { classNames } from "../util/lang"
-import { JSX } from "preact"
 
 const STATUS_TAGS = ["seed", "sapling", "evergreen"]
 const STATUS_LABELS: Record<string, string> = {
@@ -23,21 +22,6 @@ const GardenStats: QuartzComponent = ({ allFiles, displayClass }: QuartzComponen
     statusCounts[tag] = notes.filter((f) => f.frontmatter?.tags?.includes(tag)).length
   }
 
-  const latestDate = notes
-    .map((f) => f.dates?.modified ?? f.dates?.created)
-    .filter(Boolean)
-    .sort((a, b) => (b as Date).getTime() - (a as Date).getTime())[0] as Date | undefined
-
-  const segments: (string | JSX.Element)[] = []
-  if (latestDate) {
-    const fmt = latestDate.toLocaleDateString("zh-CN", {
-      year: "numeric",
-      month: "short",
-      day: "numeric",
-    })
-    segments.push(`最近更新：${fmt}`)
-  }
-
   return (
     <div class={classNames(displayClass, "garden-stats")}>
       <div class="stats-row">
@@ -52,7 +36,6 @@ const GardenStats: QuartzComponent = ({ allFiles, displayClass }: QuartzComponen
           </div>
         ))}
       </div>
-      {segments.length > 0 && <p class="stats-meta">{segments}</p>}
     </div>
   )
 }
@@ -99,12 +82,6 @@ GardenStats.css = `
   font-size: 0.75rem;
   color: var(--darkgray);
   margin-top: 0.2rem;
-}
-
-.stats-meta {
-  font-size: 0.8rem;
-  color: var(--gray);
-  margin: 0.5rem 0 0;
 }
 `
 
