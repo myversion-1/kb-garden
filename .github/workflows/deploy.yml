@@ -47,13 +47,26 @@ jobs:
       - name: Verify synced content
         run: ls -la content/ | head -20
 
+      - name: Debug content/04-moments/2026
+        run: ls -la content/04-moments/2026/ || echo "dir not found"
+
       - name: Build Quartz
         run: |
           mv .gitignore .gitignore.bak
           grep -v '^content/' .gitignore.bak > .gitignore || true
           npx quartz build --verbose
           mv .gitignore.bak .gitignore
-      
+
+      - name: Debug public/04-moments/2026
+        run: ls -la public/04-moments/2026/ || echo "dir not found"
+
+      - name: Clean up orphaned moment pages
+        run: |
+          rm -f public/04-moments/2026/05-23-064323-garden-moment-capture*
+          rm -f public/04-moments/2026/05-23-064349-moments-of-culinary-gardening*
+          rm -f public/04-moments/2026/05-23-082636-gardening-moment-food-harvest*
+          ls -la public/04-moments/2026/ || echo "dir not found"
+
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
         with:
