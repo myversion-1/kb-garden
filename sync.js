@@ -199,14 +199,8 @@ function ensureDir(dir) {
   }
 }
 
-function cleanContentDir() {
-  if (fs.existsSync(CONTENT_DIR)) {
-    // Remove all contents but keep the directory itself
-    for (const entry of fs.readdirSync(CONTENT_DIR)) {
-      const entryPath = path.join(CONTENT_DIR, entry);
-      fs.rmSync(entryPath, { recursive: true, force: true });
-    }
-  } else {
+function ensureContentDir() {
+  if (!fs.existsSync(CONTENT_DIR)) {
     fs.mkdirSync(CONTENT_DIR, { recursive: true });
   }
 }
@@ -284,7 +278,7 @@ function main() {
   console.log(`Syncing to:   ${CONTENT_DIR}`);
   console.log('');
 
-  cleanContentDir();
+  ensureContentDir();
 
   const { synced, skipped } = syncDirectory(SOURCE_DIR, CONTENT_DIR);
 
