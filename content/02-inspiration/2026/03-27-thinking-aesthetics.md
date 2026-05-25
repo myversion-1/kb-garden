@@ -13,4 +13,4 @@ description: 李继刚的思维方式与审美取向图谱笔记
 
 这是一份关于思维方式和审美取向的图谱文档，记录了相关的思考框架。
 
-> 相关：[[01-claude/insights/cost_analysis|成本分析]]
+> 相关：[[../../01-claude/insights/cost_analysis|成本分析]]

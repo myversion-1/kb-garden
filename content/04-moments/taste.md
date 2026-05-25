@@ -21,7 +21,7 @@ description: 触动我的瞬间、思考碎片与认知成长的记录。
 - **日拱一卒** → 长期主义的践行
 
 ### 认知洞察
-- **世界模型（World Model）** → 晶体智力与默会知识 [[01-claude/insights/cost_analysis|AI 协作]]
+- **世界模型（World Model）** → 晶体智力与默会知识 [[../01-claude/insights/cost_analysis|AI 协作]]
 - **正面碰触后放手（Touch and Release）** → 韧性的精确定义
 - **热爱驱动（Passion-Driven）** → 从恐惧到探索的转向
 

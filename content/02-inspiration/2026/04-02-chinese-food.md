@@ -13,4 +13,4 @@ description: 归档自 inbox 的美食记录
 
 > 2026/04/02 12:49 📷 中式餐点
 
-> 相关：[[02-inspiration/2026/03-30-street-restaurant|街边餐馆]]
+> 相关：[[03-30-street-restaurant|街边餐馆]]

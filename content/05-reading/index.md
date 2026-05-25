@@ -17,4 +17,4 @@ publish: true
 
 ## 阅读笔记
 
-阅读笔记归入 [[03-reading|书架 Bookshelf]] 分类。
+阅读笔记归入 [[../03-reading|书架 Bookshelf]] 分类。

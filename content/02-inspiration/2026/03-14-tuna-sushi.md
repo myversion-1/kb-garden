@@ -13,4 +13,4 @@ description: 归档自 inbox 的美食记录
 
 > 2026/03/14 01:09 📷 金枪鱼寿司
 
-> 相关：[[02-inspiration/2026/04-02-chinese-food|中式餐点]]
+> 相关：[[04-02-chinese-food|中式餐点]]
