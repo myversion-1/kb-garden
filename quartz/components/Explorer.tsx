@@ -43,6 +43,25 @@ const defaultOptions: Options = {
     if (names[node.slugSegment]) {
       node.displayName = names[node.slugSegment]
     }
+
+    // 清理 taste 目录下文件的显示名：去掉 markdown 图片语法、截断过长内容
+    if (!node.isFolder && node.slug?.includes("/taste/")) {
+      let name = node.displayName
+
+      // 去掉 markdown 图片语法: 🖼️ [text](url) → text
+      name = name.replace(/🖼️\s*\[([^\]]+)\]\([^)]+\)/g, "$1")
+      // 去掉普通 markdown 链接: [text](url) → text
+      name = name.replace(/!?\[([^\]]+)\]\([^)]+\)/g, "$1")
+      // 去掉行内 HTML 标签
+      name = name.replace(/<[^>]+>/g, "")
+
+      // 截断过长的名字（中文按字符计，保留 18 个字符）
+      if (name.length > 18) {
+        name = name.slice(0, 16) + "..."
+      }
+
+      node.displayName = name
+    }
   },
   sortFn: (a, b) => {
     // Custom sort: directories first, then by defined priority order
