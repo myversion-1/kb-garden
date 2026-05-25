@@ -183,6 +183,40 @@ function shouldExclude(filePath) {
   return false;
 }
 
+// Top-level content directories — used to detect content-root-relative wikilinks
+const TOP_LEVEL_DIRS = [
+  '01-claude', '02-inspiration', '03-reading', '04-moments',
+  '05-reading', '05-reports', '06-learning', '07-projects',
+  '08-health', 'templates',
+];
+
+// Fix wikilinks to use proper relative paths for Quartz's markdownLinkResolution: "relative"
+// Quartz prepends "./" to all wikilinks that don't start with ".", which causes the browser
+// to resolve paths relative to the current page — creating double-path 404s for cross-directory links.
+function fixWikilinks(content, relativePath) {
+  const parts = relativePath.replace(/\\/g, '/').split('/');
+  const dirParts = parts.slice(0, -1);
+  const depth = dirParts.length;
+  const prefix = '../'.repeat(depth);
+
+  return content.replace(/\[\[([^\]]+)\]\]/g, (match, target) => {
+    const pipeIdx = target.indexOf('|');
+    const linkTarget = pipeIdx === -1 ? target : target.slice(0, pipeIdx);
+    const alias = pipeIdx === -1 ? '' : target.slice(pipeIdx + 1);
+
+    if (linkTarget.startsWith('.')) return match;
+    if (!linkTarget.includes('/')) return match;
+
+    const firstPart = linkTarget.split('/')[0];
+    if (TOP_LEVEL_DIRS.includes(firstPart)) {
+      const newTarget = prefix + linkTarget;
+      return alias ? `[[${newTarget}|${alias}]]` : `[[${newTarget}]]`;
+    }
+
+    return match;
+  });
+}
+
 function hasPublishFalse(content) {
   try {
     const parsed = parseFrontmatter(content);
@@ -254,6 +288,11 @@ function syncDirectory(srcDir, destDir) {
 
         const destPath = path.join(destDir, entry.name);
         ensureDir(destDir);
+
+        // Fix wikilinks to use proper relative paths (based on destination path within content/)
+        const relPath = path.relative(CONTENT_DIR, destPath);
+        content = fixWikilinks(content, relPath);
+
         fs.writeFileSync(destPath, content, 'utf-8');
       } else {
         const destPath = path.join(destDir, entry.name);
@@ -287,10 +326,24 @@ function main() {
   const sourceReadmePath = path.join(SOURCE_DIR, 'README.md');
   const indexPath = path.join(CONTENT_DIR, 'index.md');
   if (fs.existsSync(sourceIndexPath)) {
-    fs.copyFileSync(sourceIndexPath, indexPath);
+    let content = fs.readFileSync(sourceIndexPath, 'utf-8');
+    const hasFrontmatter = content.startsWith('---');
+    if (hasFrontmatter) {
+      const endIdx = content.indexOf('---', 3);
+      if (endIdx !== -1) {
+        const frontmatter = content.slice(0, endIdx + 3);
+        const body = content.slice(endIdx + 3);
+        content = frontmatter + fixWikilinks(body, 'index.md');
+      }
+    } else {
+      content = fixWikilinks(content, 'index.md');
+    }
+    fs.writeFileSync(indexPath, content, 'utf-8');
     console.log('[INFO] Copied index.md -> index.md');
   } else if (fs.existsSync(sourceReadmePath)) {
-    fs.copyFileSync(sourceReadmePath, indexPath);
+    let content = fs.readFileSync(sourceReadmePath, 'utf-8');
+    content = fixWikilinks(content, 'index.md');
+    fs.writeFileSync(indexPath, content, 'utf-8');
     console.log('[INFO] Copied README.md -> index.md');
   }
 
