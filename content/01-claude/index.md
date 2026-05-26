@@ -1,10 +1,10 @@
 ---
-title: Claude 记忆索引
+title: AI 协作
 tags: [sapling]
 description: 关于 Claude Code 与 AI 协作的思考与实践索引。
 ---
 
-# Claude 记忆索引
+# AI 协作
 
 这里是关于 Claude Code 与 AI 协作的思考与实践。
 

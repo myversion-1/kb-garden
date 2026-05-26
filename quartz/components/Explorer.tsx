@@ -28,7 +28,7 @@ const defaultOptions: Options = {
   useSavedState: true,
   mapFn: (node) => {
     const names: Record<string, string> = {
-      "01-claude": "思考 Think",
+      "01-claude": "AI 协作",
       "02-inspiration": "灵感 Spark",
       "03-reading": "阅读 Read",
       "04-moments": "生活 Life",
@@ -68,7 +68,7 @@ const defaultOptions: Options = {
     if ((!a.isFolder && !b.isFolder) || (a.isFolder && b.isFolder)) {
       // Priority order for top-level sections
       const priority: Record<string, number> = {
-        "思考 Think": 1,
+        "AI 协作": 1,
         "灵感 Spark": 2,
         "阅读 Read": 3,
         "读统 Stats": 4,
