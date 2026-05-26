@@ -1,10 +1,10 @@
 ---
-title: 阅读索引
+title: 阅读 Read
 tags: [sapling]
 description: 读书笔记与阅读感悟的索引。
 ---
 
-# 阅读索引
+# 阅读 Read
 
 读书笔记与阅读感悟。
 

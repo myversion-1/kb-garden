@@ -34,6 +34,8 @@ const defaultOptions: Options = {
       "04-moments": "生活 Life",
       "05-reading": "读统 Stats",
       "05-reports": "周报 Weekly",
+      "06-learning": "学习 Learn",
+      "07-projects": "项目 Projects",
       "08-health": "健康 Health",
       "insights": "洞察 Insights",
       "taste": "品味 Taste",
@@ -75,6 +77,8 @@ const defaultOptions: Options = {
         "生活 Life": 5,
         "周报 Weekly": 6,
         "健康 Health": 7,
+        "学习 Learn": 8,
+        "项目 Projects": 9,
       }
       const aPriority = priority[a.displayName] ?? 99
       const bPriority = priority[b.displayName] ?? 99

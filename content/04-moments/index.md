@@ -1,11 +1,11 @@
 ---
-title: 生活 Moments
+title: 生活 Life
 tags: [seed]
 description: 触动我的瞬间——影像、味觉与生活碎片。
 publish: true
 ---
 
-# 生活 Moments
+# 生活 Life
 
 触动我的瞬间——影像、味觉与生活碎片。
 
