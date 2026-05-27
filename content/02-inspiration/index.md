@@ -1,10 +1,10 @@
 ---
-title: 灵感 Spark
+title: 灵感索引
 tags: [seed]
 description: 日常思考与灵感瞬间的索引。
 ---
 
-# 灵感 Spark
+# 灵感索引
 
 记录日常思考与灵感瞬间。
 

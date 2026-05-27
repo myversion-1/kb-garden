@@ -12,4 +12,4 @@ description: A moment of pet care routine.
 
 A visual testament to the dedication of a cat owner, with 24 packages of cat litter neatly stacked, signifying a successful shopping trip and a well-stocked home for the feline companion.
 
-> 记录于 [[../taste|Taste Log]]
+> 记录于 [[../../04-moments/taste|Taste Log]]

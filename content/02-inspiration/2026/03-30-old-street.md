@@ -13,4 +13,4 @@ description: 归档自 inbox 的旅行记录
 
 > 2026/03/30 09:31 📷 老街巷弄
 
-> 相关：[[04-05-shenzhen-trip|深圳半日行]]
+> 相关：[[../../02-inspiration/2026/04-05-shenzhen-trip|深圳半日行]]

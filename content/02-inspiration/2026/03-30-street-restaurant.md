@@ -13,4 +13,4 @@ description: 归档自 inbox 的美食记录
 
 > 2026/03/30 09:31 📷 街边餐馆
 
-> 相关：[[03-14-tuna-sushi|金枪鱼寿司]]
+> 相关：[[../../02-inspiration/2026/03-14-tuna-sushi|金枪鱼寿司]]
