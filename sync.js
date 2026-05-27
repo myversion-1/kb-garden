@@ -31,7 +31,6 @@ const EXCLUDED_SUBDIRS = new Set([
   'memory',     // 01-claude/memory - 私人记忆
   'config',     // 01-claude/config - 配置
   'skills',     // 01-claude/skills - 技能定义
-  'insights',   // 01-claude/insights - 成本分析等内部报告
   'people',     // 04-moments/people - 人脸照片（隐私）
   'screenshot', // 04-moments/screenshot - 聊天记录截图（隐私）
 ]);
