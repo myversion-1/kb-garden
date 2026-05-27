@@ -11,6 +11,22 @@ description: Sharon 的数字花园——存放思考的地方，没有精心策
 
 ---
 
+## 为什么写 / Why I Write
+
+我写，因为思考值得被看见——不是成品，而是过程。
+
+我在语言、技术和日常实践的交叉点上工作，帮助处于认知边界的人（包括我自己）将抽象逻辑转化为可行动的洞察。这座花园不是效率工具，而是认知的延伸：存放未完成的念头、意外产生的连接、以及那些在游泳时浮现、在阅读中沉淀的想法。
+
+心外无物。这里没有精心策划的"内容策略"，只有真实的记录和诚实的思考。
+
+I write because thinking deserves to be seen — not as finished products, but as process.
+
+I work at the intersection of language, technology, and daily practice, helping people at cognitive boundaries (myself included) turn abstract logic into actionable insight. This garden is not a productivity tool — it's a cognitive extension: a place for half-finished thoughts, unexpected connections, and ideas that surface during a swim or settle between the pages of a book.
+
+Substance over decoration. No content strategy — just honest thinking, growing in public.
+
+---
+
 ## 关于这个花园 / About This Garden
 
 页面顶部显示的是花园的实时数据：笔记总量、成熟度分布，以及最近更新的内容。
