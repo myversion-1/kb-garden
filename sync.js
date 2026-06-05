@@ -32,7 +32,6 @@ const EXCLUDED_SUBDIRS = new Set([
   'config',     // 01-claude/config - 配置
   'skills',     // 01-claude/skills - 技能定义
   'people',     // 04-moments/people - 人脸照片（隐私）
-  'screenshot', // 04-moments/screenshot - 聊天记录截图（隐私）
 ]);
 
 // Path blacklist: these directories/files are NEVER synced (unless explicitly allowed)
