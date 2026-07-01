@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0">
+    <channel>
+      <title>Sharon&#039;s Digital Garden</title>
+      <link>https://myversion-1.github.io/kb-garden</link>
+      <description>最近的10条笔记 / Last 10 notes on Sharon&#039;s Digital Garden</description>
+      <generator>Quartz -- quartz.jzhao.xyz</generator>
+      <item>
+    <title>2026-06</title>
+    <link>https://myversion-1.github.io/kb-garden/07-projects/2026-06</link>
+    <guid>https://myversion-1.github.io/kb-garden/07-projects/2026-06</guid>
+    <description><![CDATA[ 项目记录 项目进度与工作文档 测试公开花园 2026/05/26 13:05 测试默认公开到花园 测试 公开 花园. ]]></description>
+    <pubDate>Wed, 01 Jul 2026 02:03:26 GMT</pubDate>
+  </item><item>
+    <title>Claude 使用洞察报告</title>
+    <link>https://myversion-1.github.io/kb-garden/01-claude/insights/</link>
+    <guid>https://myversion-1.github.io/kb-garden/01-claude/insights/</guid>
+    <description><![CDATA[ Claude Code CLI 的使用分析和成本优化报告索引。 ]]></description>
+    <pubDate>Wed, 01 Jul 2026 02:03:26 GMT</pubDate>
+  </item><item>
+    <title>寻找生命的意义与方向</title>
+    <link>https://myversion-1.github.io/kb-garden/02-inspiration/2026/06-24-103533-%E5%AF%BB%E6%89%BE%E7%94%9F%E5%91%BD%E7%9A%84%E6%84%8F%E4%B9%89%E4%B8%8E%E6%96%B9%E5%90%91</link>
+    <guid>https://myversion-1.github.io/kb-garden/02-inspiration/2026/06-24-103533-%E5%AF%BB%E6%89%BE%E7%94%9F%E5%91%BD%E7%9A%84%E6%84%8F%E4%B9%89%E4%B8%8E%E6%96%B9%E5%90%91</guid>
+    <description><![CDATA[ 对个人生活意义和方向的深刻思考。 ]]></description>
+    <pubDate>Wed, 24 Jun 2026 00:00:00 GMT</pubDate>
+  </item><item>
+    <title>失眠引发的烦忧</title>
+    <link>https://myversion-1.github.io/kb-garden/04-moments/2026/06-23-010525-%E5%A4%B1%E7%9C%A0%E5%BC%95%E5%8F%91%E7%9A%84%E7%83%A6%E5%BF%A7</link>
+    <guid>https://myversion-1.github.io/kb-garden/04-moments/2026/06-23-010525-%E5%A4%B1%E7%9C%A0%E5%BC%95%E5%8F%91%E7%9A%84%E7%83%A6%E5%BF%A7</guid>
+    <description><![CDATA[ 记录因失眠导致的情绪波动。 ]]></description>
+    <pubDate>Tue, 23 Jun 2026 00:00:00 GMT</pubDate>
+  </item><item>
+    <title>阅读报告 — 2026年06月</title>
+    <link>https://myversion-1.github.io/kb-garden/content/05-reading/stats/2026-06</link>
+    <guid>https://myversion-1.github.io/kb-garden/content/05-reading/stats/2026-06</guid>
+    <description><![CDATA[ 2026年06月阅读 84小时40分钟，11 天，读完 34 本 ]]></description>
+    <pubDate>Thu, 11 Jun 2026 00:00:00 GMT</pubDate>
+  </item><item>
+    <title>Claude 记忆索引</title>
+    <link>https://myversion-1.github.io/kb-garden/01-claude/</link>
+    <guid>https://myversion-1.github.io/kb-garden/01-claude/</guid>
+    <description><![CDATA[ 关于 Claude Code 与 AI 协作的思考与实践索引。 ]]></description>
+    <pubDate>Fri, 05 Jun 2026 09:47:31 GMT</pubDate>
+  </item><item>
+    <title>Claude 使用洞察报告</title>
+    <link>https://myversion-1.github.io/kb-garden/01-claude/insights/README</link>
+    <guid>https://myversion-1.github.io/kb-garden/01-claude/insights/README</guid>
+    <description><![CDATA[ Claude Code CLI 的使用分析和成本优化报告索引。 ]]></description>
+    <pubDate>Fri, 05 Jun 2026 09:47:31 GMT</pubDate>
+  </item><item>
+    <title>Claude Code CLI 成本优化方案</title>
+    <link>https://myversion-1.github.io/kb-garden/01-claude/insights/cost_analysis</link>
+    <guid>https://myversion-1.github.io/kb-garden/01-claude/insights/cost_analysis</guid>
+    <description><![CDATA[ 对比 OpenRouter、Moonshot、DeepSeek 官方等渠道的模型价格，给出重度使用场景下的最优成本方案，月省可达 50-60%。 ]]></description>
+    <pubDate>Fri, 05 Jun 2026 09:47:31 GMT</pubDate>
+  </item><item>
+    <title>灵感索引</title>
+    <link>https://myversion-1.github.io/kb-garden/02-inspiration/</link>
+    <guid>https://myversion-1.github.io/kb-garden/02-inspiration/</guid>
+    <description><![CDATA[ 日常思考与灵感瞬间的索引。 ]]></description>
+    <pubDate>Fri, 05 Jun 2026 09:47:31 GMT</pubDate>
+  </item><item>
+    <title>阅读索引</title>
+    <link>https://myversion-1.github.io/kb-garden/03-reading/</link>
+    <guid>https://myversion-1.github.io/kb-garden/03-reading/</guid>
+    <description><![CDATA[ 读书笔记与阅读感悟的索引。 ]]></description>
+    <pubDate>Fri, 05 Jun 2026 09:47:31 GMT</pubDate>
+  </item>
+    </channel>
+  </rss>
